@@ -1,20 +1,19 @@
 "use strict"
 const FruitTree = require('./fruit_tree')
-const Mango = require('./mango_fruit')
+const Apple = require('./apple_fruit')
 
-class MangoTree extends FruitTree{
+class AppleTree extends FruitTree{
 
   constructor () {
     super()
   }
 
-  // Produce some mangoes
-  produceMangoes () {
+  produceApples () {
     let limit = this.getRandom(1, 15)
     if(this.age >= this._matureAge){
       let arr = []
       for(let i = 0; i < limit; i++){
-        arr.push(new Mango())
+        arr.push(new Apple())
       }
       this.fruits = arr
     }
@@ -22,4 +21,4 @@ class MangoTree extends FruitTree{
 
 }
 
-module.exports = MangoTree
+module.exports = AppleTree
