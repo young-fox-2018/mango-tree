@@ -1,5 +1,6 @@
+"use strict"
+
 class FruitTree {
-    // Initialize a new MangoTree
     constructor () {
       this._age = 0
       this._height = 0

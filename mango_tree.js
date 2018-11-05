@@ -58,10 +58,4 @@ class MangoTree extends FruitTree {
 
 }
 
-let mangoTree = new MangoTree()
-do {
-  mangoTree.grow()
-  mangoTree.produceMangoes()
-  mangoTree.harvest()
-  console.log(`[Year ${mangoTree.age} Report] Height = ${mangoTree.height} | Fruits harvested = ${mangoTree.harvested}`)
-} while (mangoTree.healthStatus != false)
+module.exports = MangoTree

@@ -58,10 +58,4 @@ class PearTree extends FruitTree{
 
 }
 
-let pearTree = new PearTree()
-do {
-  pearTree.grow()
-  pearTree.producePears()
-  pearTree.harvest()
-  console.log(`[Year ${pearTree.age} Report] Height = ${pearTree.height} | Fruits harvested = ${pearTree.harvested}`)
-} while (pearTree.healthStatus != false)
+module.exports = PearTree

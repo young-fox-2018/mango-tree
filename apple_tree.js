@@ -58,10 +58,4 @@ class AppleTree extends FruitTree {
 
 }
 
-let appleTree = new AppleTree()
-do {
-  appleTree.grow()
-  appleTree.produceApples()
-  appleTree.harvest()
-  console.log(`[Year ${appleTree.age} Report] Height = ${appleTree.height} | Fruits harvested = ${appleTree.harvested}`)
-} while (appleTree.healthStatus != false)
+module.exports = AppleTree

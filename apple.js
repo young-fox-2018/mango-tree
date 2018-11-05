@@ -1,3 +1,5 @@
+"use strict"
+
 const Fruit = require('./fruit')
 
 class Apple extends Fruit {
