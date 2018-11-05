@@ -1,67 +1,68 @@
 "use strict"
-
+const FruitTree = require('./fruit_tree')
 // Release 0
+const Mango = require('./mango')
 
-class MangoTree {
-
-  // Initialize a new MangoTree
-  constructor () {
+class MangoTree extends FruitTree {
+  constructor() {
+    super()
+    this._matureAge = 5
+    this._stopGrow = 16
+    this._deadAge = 20
+    this._fruit = Mango
   }
-
-  get age () {
-  }
-
-  get height () {
-
-  }
-
-  get fruits () {
-  }
-
-  get healthStatus () {
-  }
-
-  get harvested () {
-
-  }
-
-  // Get current states here
-
   // Grow the tree
-  grow () {
+  grow() {
+    let heightLimit = 7
+    this.age += 1
+    if (this.age < this._stopGrow && this.height < heightLimit) {
+      this.height += Math.floor(Math.random() * heightLimit * 2) / 10
+    }
+    if (this.age === this.deadAge) {
+      this._healthStatus = false
+    }
+
   }
 
   // Produce some mangoes
-  produceMangoes () {
+  produceMangoes() {
+    if (this.age >= this.matureAge) {
+      let randomFruits = Math.round(Math.random() * 10) + 1
+      for (let i = 0; i < randomFruits; i++) {
+        this.fruits.push(new this._fruit())
+      }
+    }
   }
 
   // Get some fruits
-  harvest () {
+  harvest() {
+    let good = 0
+    let bad = 0
+    for (let i = 0; i < this.fruits.length; i++) {
+      if (this.fruits[i]._quality === `Good`) {
+        good++
+      } else if (this.fruits[i]._quality === `Bad`) {
+        bad++
+      }
+    }
+    this.harvested = `${this.fruits.length} (${good} good, ${bad} bad)`
+    this.fruits = []
   }
 
 }
 
-class Mango {
-  // Produce a mango
-  constructor () {
-  }
-}
+let mangoTree = new MangoTree()
+console.log(`==============================Mangoe Tree!=============================`)
+do {
+  mangoTree.grow();
+  mangoTree.produceMangoes();
+  mangoTree.harvest();
+  console.log(`[Year ${mangoTree.age} Report] Height = ${mangoTree.height} | Fruits harvested = ${mangoTree.harvested}`)
+  if (!mangoTree.healthStatus) console.log(`The tree has met its end`)
+} while (mangoTree.healthStatus != false)
 
-/**
-  * driver code untuk release 0
-  * let mangoTree = new MangoTree()
-  * do {
-  *   mangoTree.grow();
-  *   mangoTree.produceMangoes();
-  *   mangoTree.harvest();
-  *   console.log(`[Year ${tree.age} Report] Height = ${tree.height} | Fruits harvested = ${tree.harvested}`)
-  * } while (mangoTree.healthStatus != false)
-  */
 
-// Release 1
-class AppleTree {}
-class Apple {}
 
-// Release 2
-class FruitTree {}
-class Fruit {}
+module.exports = MangoTree
+
+
