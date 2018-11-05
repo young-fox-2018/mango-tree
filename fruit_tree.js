@@ -7,7 +7,6 @@ class FruitTree {
     this._age = 0
     this._height = 0
     this._fruits = []
-    this._fruit = new Fruit()
     this._healthStatus = true
     this._harvested = ""
     this._matureAge = matureAge
@@ -15,8 +14,8 @@ class FruitTree {
     this._deadAge = deadAge
   }
 
-  get fruit() {
-    return this._fruit
+  getFruit() {
+    return new Fruit()
   }
 
   get age () {
@@ -81,7 +80,7 @@ class FruitTree {
     if (this.age > this.matureAge) {
         let random_loop = Math.floor(Math.random() * 7) + 1
         for (let i = 0; i < random_loop; i++) {
-              this._fruits.push(this.fruit)
+              this._fruits.push(this.getFruit())
         }
     }
   }
