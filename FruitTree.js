@@ -1,5 +1,6 @@
 "use strict"
 
+const Fruit = require('./Fruit')
 
 class FruitTree {
     constructor () {
@@ -52,14 +53,7 @@ class FruitTree {
 
     grow () {
 
-        // console.log(this._age)
-        // console.log(this._matureAge, 'mature age')
         this._age += 1
-        // if (this._age >= this._matureAge && this._age <= this._dieAge) {
-        //     // console.log('true')
-        //     this.produceFruits()
-        //     this.harvest()
-        // } 
 
         if (this._age <= this._stopHeightAge) {
             this._height  += Math.floor(Math.random() * (3 - 1) + 1)
@@ -76,12 +70,12 @@ class FruitTree {
     produceFruits () {
         if (this._age >= this._matureAge && this._age <= this._dieAge) {
             let random = Math.floor(Math.random() * (15 - 3) + 3)
-            // console.log('aa')
+
             this._fruits = []
             for ( let i = 0; i < random; i++) {
-                this._fruits.push(new Fruit())
+                this._fruits.push(this.getFruit())
             }
-            // console.log(this.fruits)
+
         }
     }
     
@@ -89,7 +83,6 @@ class FruitTree {
         let fruits = this._fruits
         let good = 0
         let bad = 0
-        // console.log('aaaa')
         for ( let i = 0; i < fruits.length; i++) {
             if (fruits[i].quality === 'bad') {
             bad += 1
@@ -98,33 +91,12 @@ class FruitTree {
             }
         }
         this._harvested = `${fruits.length} (${good} good, ${bad} bad)`
-        // console.log(this._fruits)
     }
 
     getFruit() {
         return new Fruit()
     }
 }
-
-class Fruit {
-    // Produce a mango
-    constructor () {
-      this.quality = this.Quality()
-    }
-  
-    Quality(){
-      let arrQuality = ['bad','good']
-      let random = Math.round(Math.random())
-      return arrQuality[random]
-  
-    }
-
-    // getFruit() {
-    //     return new Fruit()
-    // }
-  }
-
-// console.log(new MangoTree.Mango()) 
 
 
 module.exports = FruitTree
