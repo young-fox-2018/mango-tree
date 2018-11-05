@@ -14,6 +14,8 @@ class FruitTree {
     this.matureage = 0
     this.stopGrow = 0
     this.dead = 0
+    this.min = 0
+    this.max =0
   }
 
   get age () {
@@ -45,10 +47,15 @@ class FruitTree {
   }
 
   // Get current states here
+  getRandomInt(min, max) {
+    min = Math.ceil(min);
+    max = Math.floor(max);
+    return Math.floor(Math.random() * (max - min)) + min; //The maximum is exclusive and the minimum is inclusive
+  }
 
   // Grow the tree
   grow () {
-    let random = Math.floor(Math.random() * 5)
+    let random = this.getRandomInt(this.min , this.max)
     if (this.age === this.dead) {
       this._status = false
     }else {
@@ -60,16 +67,20 @@ class FruitTree {
   }
 
   // Produce some mangoes
-  produceMangoes () {
+  produceFruit () {
     let random = Math.floor(Math.random() * 20)
 
     if ( this.age >= this.matureage && this.age <= this.dead) {
       while(this._fruits.length < random) {
         // let obj = new Mango()
-        this._fruits.push(new Fruit())
+        this._fruits.push(this.getFruit())
       }
     }
 
+  }
+
+  getFruit() {
+    return new Fruit()
   }
 
   // Get some fruits
@@ -110,9 +121,15 @@ class Fruit {
 class AppleTree extends FruitTree{
   constructor() {
     super()
+    this.min = 2 
+    this.max = 5
     this.matureage = 5
     this.stopGrow = 10
     this.dead = 15
+  }
+
+  getFruit() {
+    return new Apple()
   }
 }
 class Apple extends Fruit {}
@@ -121,12 +138,36 @@ class Apple extends Fruit {}
 class MangoTree extends FruitTree{
   constructor() {
     super()
+    this.min = 1
+    this.max = 3
     this.matureage = 10
     this.stopGrow = 15
     this.dead = 20
   }
+
+  getFruit() {
+    return new Mango()
+  }
 }
 class Mango extends Fruit {
+  
+}
+
+class PearTree extends FruitTree{
+  constructor() {
+    super()
+    this.min = 1
+    this.max = 2
+    this.matureage = 3
+    this.stopGrow = 5
+    this.dead = 10
+  }
+
+  getFruit() {
+    return new Pear()
+  }
+}
+class Pear extends Fruit {
   
 }
 
@@ -134,8 +175,7 @@ class Mango extends Fruit {
 let mangoTree = new MangoTree()
 do {
   mangoTree.grow();
-  mangoTree.produceMangoes();
-  // console.log(mangoTree._fruits)
+  mangoTree.produceFruit();
   mangoTree.harvest();
       console.log(`[Year ${mangoTree.age} Report] Height = ${mangoTree.height} m | Fruits harvested = ${mangoTree.harvested}`)
   } while (mangoTree.healthStatus != false)
@@ -143,10 +183,16 @@ do {
   let appleTree = new AppleTree()
 do {
   appleTree.grow();
-  appleTree.produceMangoes();
-  // console.log(mangoTree._fruits)
+  appleTree.produceFruit();
   appleTree.harvest();
       console.log(`[Year ${appleTree.age} Report] Height = ${appleTree.height} m | Fruits harvested = ${appleTree.harvested}`)
   } while (appleTree.healthStatus != false)
   
+  let pearTree = new PearTree()
+do {
+  pearTree.grow();
+  pearTree.produceFruit();
+  pearTree.harvest();
+      console.log(`[Year ${pearTree.age} Report] Height = ${pearTree.height} m | Fruits harvested = ${pearTree.harvested}`)
+  } while (pearTree.healthStatus != false)
   
