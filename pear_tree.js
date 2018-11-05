@@ -1,14 +1,15 @@
-const FruitTree = require("./fruit_tree")
-const Mango = require("./mango")
 
-class MangoTree extends FruitTree {
+const FruitTree = require("./fruit_tree")
+const Pear = require("./pear")
+
+class PearTree extends FruitTree {
     constructor(matureAge, ageStopGrow, deadAge) {
         super(matureAge, ageStopGrow, deadAge)
     }
     getFruit() {
-        return new Mango()
+        return new Pear()
     }
 }
 
 
-module.exports = MangoTree
+module.exports = PearTree
