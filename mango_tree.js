@@ -2,7 +2,7 @@
 
 // Release 0
 
-class MangoTree {
+class FruitTree {
 
   // Initialize a new MangoTree
   constructor () {
@@ -11,9 +11,9 @@ class MangoTree {
     this._fruits = [] 
     this._harvested = 0 
     this._status = true
-    this.matureage = 5
-    this.stopGrow = 15
-    this.dead = 20
+    this.matureage = 0
+    this.stopGrow = 0
+    this.dead = 0
   }
 
   get age () {
@@ -66,7 +66,7 @@ class MangoTree {
     if ( this.age >= this.matureage && this.age <= this.dead) {
       while(this._fruits.length < random) {
         // let obj = new Mango()
-        this._fruits.push(new Mango())
+        this._fruits.push(new Fruit())
       }
     }
 
@@ -91,7 +91,7 @@ class MangoTree {
 
 }
 
-class Mango {
+class Fruit {
   // Produce a mango
   constructor () {
     this.quality = this.generateQuality()
@@ -105,6 +105,31 @@ class Mango {
 }
 
 
+
+// Release 1
+class AppleTree extends FruitTree{
+  constructor() {
+    super()
+    this.matureage = 5
+    this.stopGrow = 10
+    this.dead = 15
+  }
+}
+class Apple extends Fruit {}
+
+// Release 2
+class MangoTree extends FruitTree{
+  constructor() {
+    super()
+    this.matureage = 10
+    this.stopGrow = 15
+    this.dead = 20
+  }
+}
+class Mango extends Fruit {
+  
+}
+
 //  driver code untuk release 0
 let mangoTree = new MangoTree()
 do {
@@ -115,11 +140,13 @@ do {
       console.log(`[Year ${mangoTree.age} Report] Height = ${mangoTree.height} m | Fruits harvested = ${mangoTree.harvested}`)
   } while (mangoTree.healthStatus != false)
   
-
-// Release 1
-class AppleTree {}
-class Apple {}
-
-// Release 2
-class FruitTree {}
-class Fruit {}
+  let appleTree = new AppleTree()
+do {
+  appleTree.grow();
+  appleTree.produceMangoes();
+  // console.log(mangoTree._fruits)
+  appleTree.harvest();
+      console.log(`[Year ${appleTree.age} Report] Height = ${appleTree.height} m | Fruits harvested = ${appleTree.harvested}`)
+  } while (appleTree.healthStatus != false)
+  
+  
