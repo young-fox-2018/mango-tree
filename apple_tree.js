@@ -1,9 +1,9 @@
 "use strict"
 
-const Mango = require('./mango')
+const Apple = require('./apple')
 const FruitTree = require('./fruit_tree')
 
-class MangoTree extends FruitTree {
+class AppleTree extends FruitTree {
   constructor() {
     super()
   }
@@ -24,12 +24,12 @@ class MangoTree extends FruitTree {
     }
   }
 
-  // Produce some mangoes
-  produceMangoes() {
+  // Produce some apples
+  produceApples() {
     if (this._age >= this._matureAge) {
       for (let i = 0; i <= this.random(8, 20); i++) {
-        let mango = new Mango()
-        this._fruits.push(mango)
+        let apple = new Apple()
+        this._fruits.push(apple)
       }
     }
   }
@@ -58,10 +58,10 @@ class MangoTree extends FruitTree {
 
 }
 
-let mangoTree = new MangoTree()
+let appleTree = new AppleTree()
 do {
-  mangoTree.grow()
-  mangoTree.produceMangoes()
-  mangoTree.harvest()
-  console.log(`[Year ${mangoTree.age} Report] Height = ${mangoTree.height} | Fruits harvested = ${mangoTree.harvested}`)
-} while (mangoTree.healthStatus != false)
+  appleTree.grow()
+  appleTree.produceApples()
+  appleTree.harvest()
+  console.log(`[Year ${appleTree.age} Report] Height = ${appleTree.height} | Fruits harvested = ${appleTree.harvested}`)
+} while (appleTree.healthStatus != false)
