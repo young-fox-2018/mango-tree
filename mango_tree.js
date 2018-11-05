@@ -1,67 +1,24 @@
 "use strict"
 
-// Release 0
+const Trees = require('./trees.js')
+const Mango = require('./mango.js')
 
-class MangoTree {
+
+class MangoTree extends Trees {
 
   // Initialize a new MangoTree
-  constructor () {
+  constructor(matureAge, stopGrow, deadAge) {
+    super(matureAge, stopGrow, deadAge)
   }
 
-  get age () {
-  }
-
-  get height () {
-
-  }
-
-  get fruits () {
-  }
-
-  get healthStatus () {
-  }
-
-  get harvested () {
-
-  }
-
-  // Get current states here
-
-  // Grow the tree
-  grow () {
-  }
-
-  // Produce some mangoes
-  produceMangoes () {
-  }
-
-  // Get some fruits
-  harvest () {
-  }
-
-}
-
-class Mango {
-  // Produce a mango
-  constructor () {
+  getFruit() {
+    return new Mango()
   }
 }
 
-/**
-  * driver code untuk release 0
-  * let mangoTree = new MangoTree()
-  * do {
-  *   mangoTree.grow();
-  *   mangoTree.produceMangoes();
-  *   mangoTree.harvest();
-  *   console.log(`[Year ${tree.age} Report] Height = ${tree.height} | Fruits harvested = ${tree.harvested}`)
-  * } while (mangoTree.healthStatus != false)
-  */
+module.exports = MangoTree
 
-// Release 1
-class AppleTree {}
-class Apple {}
 
-// Release 2
-class FruitTree {}
-class Fruit {}
+
+
+
