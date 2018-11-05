@@ -104,6 +104,7 @@ class MangoTree extends FruitTree{
   constructor() {
     super()
     this._batasUsia = 10
+    this.namaBuah = "MANGGA"
    
   }
  
@@ -116,15 +117,30 @@ class Mango {
       )]
     }
 }
+
+class PearTree extends FruitTree{
+  constructor() {
+    super()
+    this._batasUsia = 50
+    this.namaBuah = "PEAR"
+  }
+ 
+}
+class Pear {
+  // Produce a mango
+  constructor() {
+    this.quality = goodBad[Math.round(
+      Math.random()
+    )]
+  }
+}
+
 let mangoTree = new MangoTree()
 do {
   mangoTree.grow();
   mangoTree.produceMangoes();
   mangoTree.harvest();
 
-  console.log(`[Year ${mangoTree._age} Report] Height = ${mangoTree._height} | Fruits harvested = ${mangoTree._harvest}`)
+  console.log(`[Year ${mangoTree._age} Report] Height = ${mangoTree._height} | Fruits harvested = ${mangoTree.namaBuah} ${mangoTree._harvest}`)
 } while (mangoTree._healthStatus != false)
 
-class PearTree {
-
-}
