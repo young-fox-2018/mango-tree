@@ -21,7 +21,6 @@ class FruitTree {
     set age(num) {
         this._age = num
     }
-
     get height() {
         return this._height
     }

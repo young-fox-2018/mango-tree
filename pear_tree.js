@@ -27,8 +27,6 @@ class PearTree extends FruitTree {
             }
         }
     }
-
-    // Get some fruits
     harvest() {
         let good = 0
         let bad = 0
@@ -43,7 +41,6 @@ class PearTree extends FruitTree {
         this.fruits = []
     }
 }
-
 
 
 module.exports = PearTree
