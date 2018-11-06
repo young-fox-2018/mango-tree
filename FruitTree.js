@@ -1,5 +1,7 @@
 "use strict"
 
+const Fruit = require('./Fruit')
+
 class  FruitTree {
     constructor (age, height, healthStatus, stopGrowingAge, deadAge, matureAge) {
         this._age = age
@@ -14,7 +16,7 @@ class  FruitTree {
         this._matureAge = matureAge
     }
   
-     getFruit() {
+    getFruit() {
         return new Fruit()
     }
 
@@ -138,113 +140,4 @@ class  FruitTree {
     }
 }
 
-
-
-class Fruit {
-    constructor() {
-        this._quality = this.getRandomQuality()
-    }
-
-    getRandomQuality() {
-        let arr = ['good', 'bad']
-
-        return arr[Math.floor(Math.random() * 2)]
-    }
-
-    get quality() {
-        return this._quality
-    }
-}
-let fruitTree = new FruitTree(0, 0, true, 40 ,60, 50)
-
-console.log("\n" + "====FRUIT TREE===========")
-console.log("The tree is alive")
-  do {
-    fruitTree.grow();
-    fruitTree.produce();
-    fruitTree.harvest();
-  console.log(`[Year ${fruitTree.age} Report] Height = ${fruitTree.height} | Fruits harvested = ${fruitTree.harvested}`)
-  } while (fruitTree.healthStatus != false)
-
-  console.log("The tree has met its end")
-
-
-
-
-
-
-  //------------------------------------------------------------------//
-class AppleTree extends FruitTree {
-    getFruit() {
-        return new Fruit()
-    }
-}
-
-class Apple extends Fruit {
-
-}
-
-let appleTree = new AppleTree(0, 0, true, 40 ,60, 50)
-
-console.log("\n" + "====APPLE TREE===========")
-console.log("The tree is alive")
-  do {
-    appleTree.grow();
-    appleTree.produce();
-    appleTree.harvest();
-    console.log(`[Year ${appleTree.age} Report] Height = ${appleTree.height} | Fruits harvested = ${appleTree.harvested}`)
-  } while (appleTree.healthStatus != false)
-
-  console.log("The tree has met its end")
-
-  class MangoTree extends FruitTree {
-    getFruit() {
-        return new Mango()
-    }
-}
-
-
-
-//------------------------------------------------------------------//
-class Mango extends Fruit {
-
-}
-
-let mangoTree = new MangoTree(0, 0, true, 40 ,60, 50)
-
-console.log("\n" + "====MANGO TREE===========")
-console.log("The tree is alive")
-  do {
-    mangoTree.grow();
-    mangoTree.produce();
-    mangoTree.harvest();
-    console.log(`[Year ${mangoTree.age} Report] Height = ${mangoTree.height} | Fruits harvested = ${mangoTree.harvested}`)
-  } while (mangoTree.healthStatus != false)
-
-  console.log("The tree has met its end")
-
-  class PearTree extends FruitTree {
-    getFruit() {
-        return new PearTree()
-    }
-}
-
-class Pear extends Fruit {
-
-}
-
-
-
-//------------------------------------------------------------------//
-let pearTree = new PearTree(0, 0, true, 40 ,60, 50)
-
-console.log("\n" + "====PEAR TREE===========")
-console.log("The tree is alive")
-  do {
-    pearTree.grow();
-    pearTree.produce();
-    pearTree.harvest();
-    console.log(`[Year ${pearTree.age} Report] Height = ${pearTree.height} | Fruits harvested = ${pearTree.harvested}`)
-  } while (pearTree.healthStatus != false)
-
-  console.log("The tree has met its end")
+module.exports = FruitTree
