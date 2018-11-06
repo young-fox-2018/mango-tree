@@ -173,7 +173,7 @@ class Pear extends Fruit{
 }
 
 console.log(`The tree is alive :smile:`)
-let pearTree = new PearTree(5,20,35, Apple, 1.2)
+let pearTree = new PearTree(5,20,35, Pear, 1.2)
 while (pearTree._healthStatus !== false){
   pearTree.grow()
   pearTree.produceFruits()
