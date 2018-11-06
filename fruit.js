@@ -3,6 +3,10 @@ class Fruit {
     constructor () {
       this._quality = this.randomQuality()
     }
+
+    get quality() {
+      return this._quality
+    }
   
     randomQuality() {
       let random = Math.random()
