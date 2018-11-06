@@ -56,7 +56,7 @@ class FruitTree {
         this._age += 1
 
         if (this._age <= this._stopHeightAge) {
-            this._height  += Math.floor(Math.random() * (3 - 1) + 1)
+            this._height  += Math.floor(Math.random() * (800 - 1) + 1)
         }
 
         if (this._age >= this._dieAge) {
@@ -71,7 +71,6 @@ class FruitTree {
         if (this._age >= this._matureAge && this._age <= this._dieAge) {
             let random = Math.floor(Math.random() * (15 - 3) + 3)
 
-            this._fruits = []
             for ( let i = 0; i < random; i++) {
                 this._fruits.push(this.getFruit())
             }
@@ -91,6 +90,7 @@ class FruitTree {
             }
         }
         this._harvested = `${fruits.length} (${good} good, ${bad} bad)`
+        this._fruits = []
     }
 
     getFruit() {
