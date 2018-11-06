@@ -20,7 +20,7 @@ function apple() {
     let appleTree = new AppleTree()
     do {
         appleTree.grow();
-        appleTree.produceApples();
+        appleTree.produceFruits();
         appleTree.harvest();
         console.log(`[Year ${appleTree.age} Report] Height = ${appleTree.height} | Fruits harvested = ${appleTree.harvested}`)
     } while (appleTree.healthStatus != false)
@@ -32,7 +32,7 @@ function mango() {
     let mangoTree = new MangoTree()
     do {
         mangoTree.grow();
-        mangoTree.produceMangoes();
+        mangoTree.produceFruits();
         mangoTree.harvest();
         console.log(`[Year ${mangoTree.age} Report] Height = ${mangoTree.height} | Fruits harvested = ${mangoTree.harvested}`)
     } while (mangoTree.healthStatus != false)
@@ -44,7 +44,7 @@ function pear() {
     let pearTree = new PearTree()
     do {
         pearTree.grow();
-        pearTree.producePears();
+        pearTree.produceFruits();
         pearTree.harvest();
         console.log(`[Year ${pearTree.age} Report] Height = ${pearTree.height} | Fruits harvested = ${pearTree.harvested}`)
     } while (pearTree.healthStatus != false)

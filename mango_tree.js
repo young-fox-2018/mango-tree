@@ -9,7 +9,7 @@ class MangoTree extends FruitTree{
   }
 
   // Produce some mangoes
-  produceMangoes () {
+  produceFruits () {
     let limit = this.getRandom(1, 15)
     if(this.age >= this._matureAge){
       let arr = []
