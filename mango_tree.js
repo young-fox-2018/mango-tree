@@ -1,6 +1,4 @@
 "use strict"
-
-// Release 0
 const badGood = ['good','bad']
 class Tree {
   // Initialize a new MangoTree
@@ -13,8 +11,6 @@ class Tree {
     this._matureAge = matureAge
     this._dieAge = dieAge
   }
-
-
   get age () {
     return this._age
   }
@@ -58,6 +54,7 @@ class Tree {
   // Get current states here
   // Grow the tree
   grow () {
+    this.fruits = []
     this.age += 1
     if(this.age <= this._matureAge){
       let randomHeight = Math.floor(Math.random() * 30)+10
@@ -70,17 +67,15 @@ class Tree {
 
   // Produce some fruits
   produceFruits() {
-    this.fruits = []
     if(this.age >= 2 && this.age <= this._matureAge ) {
       let randomFruits = Math.floor(Math.random() * 20)+5
-      console.log(randomFruits)
+  
 
       for (let i = 0; i < randomFruits; i++) {
         
         let fruit = new Fruit()
         this.fruits.push(fruit)
       }
-      console.log(this.fruits.length)
     }
   }
 
@@ -130,15 +125,7 @@ class Mango extends Fruit {}
 // Release 1
 /**
   * driver code untuk release 0
-  * let mangoTree = new MangoTree()
-  * do {
-  *   mangoTree.grow();
-  *   mangoTree.produceMangoes();
-  *   mangoTree.harvest();
-  *   console.log(`[Year ${tree.age} Report] Height = ${tree.height} | Fruits harvested = ${tree.harvested} `)
-  * } while (mangoTree.healthStatus != false)
   */
- 
 console.log("\n"+ "-----MANGO TREE-----")
 console.log("The tree is alive! :smile:")
  let mangoTree = new MangoTree(15,20)
