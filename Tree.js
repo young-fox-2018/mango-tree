@@ -1,5 +1,4 @@
-"use strict"
-const badGood = ['good','bad']
+const Fruit = require('./Fruits.js')
 class Tree {
   // Initialize a new MangoTree
   constructor (matureAge, dieAge) {
@@ -69,17 +68,17 @@ class Tree {
   produceFruits() {
     if(this.age >= 2 && this.age <= this._matureAge ) {
       let randomFruits = Math.floor(Math.random() * 20)+5
-  
-
       for (let i = 0; i < randomFruits; i++) {
         
-        let fruit = new Fruit()
-        this.fruits.push(fruit)
+        this.fruits.push(this.getFruit())
       }
+      console.log(this.fruits)
     }
   }
-
   // Get some fruits
+  getFruit() {
+      return new Fruit
+  }
   harvest () {
     let countGood = 0
     let countBad = 0
@@ -93,58 +92,5 @@ class Tree {
     this.harvested = `${this.fruits.length} (${countGood} good, ${countBad} bad)`
   }
 }
-class Fruit {
-  // Produce a fruit
-  constructor () {
-    this.quality = badGood[Math.floor(Math.random() * 2)]
-  }
-}
 
-class AppleTree extends Tree {
-  constructor(matureAge,dieAge,name){
-    super(matureAge,dieAge)
-    this._name = name || 'Apple'
-  }
-  get name(){
-    return this._name
-  }
-}
-class Apple extends Fruit {}
-
-class MangoTree extends Tree {
-  constructor(matureAge,dieAge,name){
-    super(matureAge,dieAge)
-    this._name = name || 'Mango'
-  }
-  get name(){
-    return this._name
-  }
-}
-class Mango extends Fruit {}
-
-// Release 1
-/**
-  * driver code untuk release 0
-  */
-console.log("\n"+ "-----MANGO TREE-----")
-console.log("The tree is alive! :smile:")
- let mangoTree = new MangoTree(15,20)
-  do {
-    mangoTree.grow();
-    mangoTree.produceFruits();   
-    mangoTree.harvest();   
-    console.log(`[Year ${mangoTree.age} Report] Height = ${mangoTree.height.toFixed('1')} m | ${mangoTree.name} harvested = ${mangoTree.harvested}`)
-  } while (mangoTree.healthStatus != false)
-console.log("The tree has met its end. :sad:")
-  
-// Release 2
-console.log("\n"+ "-----Apple TREE-----")
-console.log("The tree is alive! :smile:")
- let appleTree = new AppleTree(15,20)
-  do {
-    appleTree.grow();
-    appleTree.produceFruits();   
-    appleTree.harvest();   
-    console.log(`[Year ${appleTree.age} Report] Height = ${appleTree.height.toFixed('1')} m | ${appleTree.name} harvested = ${appleTree.harvested}`)
-  } while (appleTree.healthStatus != false)
-console.log("The tree has met its end. :sad:")
+module.exports = Tree
