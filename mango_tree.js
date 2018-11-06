@@ -2,7 +2,7 @@
 
 // Release 0
 
-class MangoTree {
+class FruitTree {
 
   // Initialize a new MangoTree
   constructor () {
@@ -10,10 +10,13 @@ class MangoTree {
     this._height =0;
     this._fruits = []
     this._health = true
-    this._mature_Age = 15
-    this._Stop_Grow = 20
-    this._Death = 25
+    this._mature_Age = 0
+    this._Stop_Grow = 0
+    this._Death = 0
     this._harvested = 0
+    this._min_height = 0
+    this._max_height = 0
+
   }
   
   get age () {
@@ -39,40 +42,63 @@ class MangoTree {
   get healthStatus () {
     return this._health
   }
-  set healthStatus(data){
-    this._health = data
-  }
+  
 
   get harvested () {
     
   }
   
   // Get current states here
-  
+  getRandomInt(min, max) {
+    min = Math.ceil(min);
+    max = Math.floor(max);
+    return Math.floor(Math.random() * (max - min)) + min; //The maximum is exclusive and the minimum is inclusive
+  }
+
+
+
   // Grow the tree
   grow () {
-    let Random = Math.floor(Math.random()*5)
-    if(this.age === this._Death){
-      
-      this.healthStatus = false
-    }else{
-      this.age += 1
+    let Random = this.getRandomInt(this._min_height , this._max_height)
+    this.age += 1
+
+    if(this.age >= this._Death){
+     this._health = false
+
+   }else{
+     if(this.age < this._Stop_Grow){
+       this.height += Random
+     }
     }
-    if(this.age <= this._Stop_Grow)
-    this.height+= Random
+
+   
     
+    // if(this.age <= this._Stop_Grow){
+
+    //   this.height+= Random
+    // }
+
+    //     if(this.age === this._Death){
+    //       this._health = false
+    //     }else{
+    //       this.age += 1
+    //   }
+  
   }
 
   // Produce some mangoes
-  produceMangoes () {
+  produceFruits () {
     let random = Math.floor(Math.random()*20)
     if(this.age >= this._mature_Age && this.age <= this._Death){
       // this.fruits(random)
       while(this._fruits.length < random){
-        this._fruits.push(new Mango())
+        this._fruits.push(this.getfruit())
       }
       
     }
+  }
+  getfruit(){
+    return new Fruit()
   }
 
   // Get some fruits
@@ -92,7 +118,7 @@ class MangoTree {
   }
 }
 
-class Mango {
+class Fruit {
   // Produce a mango
   constructor () {
     this.quality  = this.generateQuality()
@@ -108,20 +134,83 @@ class Mango {
 
 
    
-   let mangoTree = new MangoTree()
-   do {
-   mangoTree.grow();
-    mangoTree.produceMangoes();
-    // console.log(mangoTree.fruits)
-  mangoTree.harvest();
-   console.log(`[Year ${mangoTree.age} Report] Height = ${mangoTree.height} m | Fruits harvested = ${mangoTree._harvested}`)
-  } while (mangoTree.healthStatus != false)
 
 
 // Release 1
-class AppleTree {}
-class Apple {}
+class AppleTree extends FruitTree {
+  constructor(){
+    super()
+    this._mature_Age = 10
+    this._Stop_Grow = 15
+    this._Death = 20
+    this._min_height = 1
+    this._max_height = 5
+  }
+  getfruit(){
+
+    return new Apple()
+  }
+}
+class Apple extends Fruit {}
 
 // Release 2
-class FruitTree extends mangoTree {}
-class Fruit extends Mango{}
+class MangoTree extends FruitTree {
+  constructor(){
+    super()
+    this._mature_Age = 10
+    this._Stop_Grow = 17
+    this._Death = 22
+    this._min_height = 2
+    this._max_height = 7
+  }
+  getfruit(){
+    return new Mango()
+  }
+  
+}
+class Mango extends Fruit{}
+
+class PearTree extends FruitTree {
+  constructor(){
+    super()
+    this._mature_Age = 15
+    this._Stop_Grow = 20
+    this._Death = 25
+    this._min_height = 1
+    this._max_height = 3
+  }
+  getfruit(){
+    return new Pear()
+  }
+  
+}
+class Pear extends Fruit{}
+
+let mangoTree = new MangoTree()
+do {
+mangoTree.grow();
+ mangoTree.produceFruits();
+//  console.log(mangoTree.getfruit())
+mangoTree.harvest();
+
+console.log(`[Year ${mangoTree.age} Report] Height = ${mangoTree.height} m | Fruits harvested = ${mangoTree._harvested}`)
+} while (mangoTree.healthStatus != false)
+
+let appleTree = new AppleTree()
+do {
+appleTree.grow();
+ appleTree.produceFruits();
+ // console.log(appleTree.fruits)
+appleTree.harvest();
+console.log(`[Year ${appleTree.age} Report] Height = ${appleTree.height} m | Fruits harvested = ${appleTree._harvested}`)
+} while (appleTree.healthStatus != false)
+
+let pearTree = new PearTree()
+do {
+pearTree.grow();
+ pearTree.produceFruits();
+ // console.log(pearTree.fruits)
+pearTree.harvest();
+console.log(pearTree.healthStatus)
+console.log(`[Year ${pearTree.age} Report] Height = ${pearTree.height} m | Fruits harvested = ${pearTree._harvested}`)
+} while (pearTree.healthStatus != false)
