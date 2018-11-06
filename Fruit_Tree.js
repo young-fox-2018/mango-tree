@@ -1,5 +1,7 @@
 // Release 2
 
+const Fruit = require('./Fruit')
+
 class FruitTree {
     constructor(){
         this._age = 0
@@ -61,8 +63,23 @@ class FruitTree {
     }
 
     set healthStatus (input) {
-      this._healthStatus = input
+        this._healthStatus = input
     }
+
+    produceFruit (input) { 
+        this.harvested = Math.round(Math.random() * 20)
+
+        if(this.age >= this.fruitful){
+            for(let i = 0 ; i < this.harvested; i++){
+                if (!input) {
+                    this.fruits.push(new Fruit ())
+                } else {
+                    this.fruits.push(input)
+                }
+            }
+        }        
+    }
+
 
       // Grow the tree
     grow () {
@@ -78,7 +95,21 @@ class FruitTree {
             this.height += Math.random()
           }
         }
-    }    
+    }
+    
+    harvest () {
+        let good = 0
+        let bad = 0
+        for(let iFruits = 0 ; iFruits < this.fruits.length ; iFruits++){
+          if(this.fruits[iFruits].quality === "good"){
+            good++
+          }
+          else{
+            bad++
+          }
+        }
+        this.fruits = []
+      }
 }
 
 module.exports = FruitTree
