@@ -8,9 +8,6 @@ class AppleTree extends FruitTree {
         this._deadAge = 18
         this._fruit = Apple
     }
-
-
-
     // Get current states here
 
     // Grow the tree
@@ -25,7 +22,7 @@ class AppleTree extends FruitTree {
         }
 
     }
-    produceApples() {
+    produceFruits() {
         if (this.age >= this.matureAge) {
             let randomFruits = Math.round(Math.random() * 20) + 1
             for (let i = 0; i < randomFruits; i++) {
@@ -33,7 +30,6 @@ class AppleTree extends FruitTree {
             }
         }
     }
-
     // Get some fruits
     harvest() {
         let good = 0
@@ -50,14 +46,6 @@ class AppleTree extends FruitTree {
     }
 }
 
-let appleTree = new AppleTree()
-console.log(`==============================Apple Tree!=============================`)
-do {
-    appleTree.grow();
-    appleTree.produceApples();
-    appleTree.harvest();
-    console.log(`[Year ${appleTree.age} Report] Height = ${appleTree.height} | Fruits harvested = ${appleTree.harvested}`)
-    if (!appleTree.healthStatus) console.log(`The tree has met its end`)
-} while (appleTree.healthStatus != false)
+
 
 module.exports = AppleTree

@@ -65,7 +65,14 @@ class FruitTree {
         return this._fruit
     }
 
-    // Get current states here
+    produceFruits() {
+        if (this.age >= this.matureAge) {
+            let randomFruits = Math.round(Math.random() * 20) + 1
+            for (let i = 0; i < randomFruits; i++) {
+                this.fruits.push(new this._fruit())
+            }
+        }
+    }
 
 }
 

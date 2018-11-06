@@ -19,7 +19,7 @@ class PearTree extends FruitTree {
         }
 
     }
-    producePears() {
+    produceFruits() {
         if (this.age >= this.matureAge) {
             let randomFruits = Math.round(Math.random() * 18) + 1
             for (let i = 0; i < randomFruits; i++) {
@@ -44,14 +44,6 @@ class PearTree extends FruitTree {
     }
 }
 
-let pearTree = new PearTree()
-console.log(`==============================Pear Tree!=============================`)
-do {
-    pearTree.grow();
-    pearTree.producePears();
-    pearTree.harvest();
-    console.log(`[Year ${pearTree.age} Report] Height = ${pearTree.height} | Fruits harvested = ${pearTree.harvested}`)
-    if (!pearTree.healthStatus) console.log(`The tree has met its end`)
-} while (pearTree.healthStatus != false)
+
 
 module.exports = PearTree

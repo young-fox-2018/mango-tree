@@ -25,9 +25,9 @@ class MangoTree extends FruitTree {
   }
 
   // Produce some mangoes
-  produceMangoes() {
+  produceFruits() {
     if (this.age >= this.matureAge) {
-      let randomFruits = Math.round(Math.random() * 10) + 1
+      let randomFruits = Math.round(Math.random() * 20) + 1
       for (let i = 0; i < randomFruits; i++) {
         this.fruits.push(new this._fruit())
       }
@@ -51,15 +51,7 @@ class MangoTree extends FruitTree {
 
 }
 
-let mangoTree = new MangoTree()
-console.log(`==============================Mangoe Tree!=============================`)
-do {
-  mangoTree.grow();
-  mangoTree.produceMangoes();
-  mangoTree.harvest();
-  console.log(`[Year ${mangoTree.age} Report] Height = ${mangoTree.height} | Fruits harvested = ${mangoTree.harvested}`)
-  if (!mangoTree.healthStatus) console.log(`The tree has met its end`)
-} while (mangoTree.healthStatus != false)
+
 
 
 
