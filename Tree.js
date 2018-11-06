@@ -72,7 +72,7 @@ class Tree {
         
         this.fruits.push(this.getFruit())
       }
-      console.log(this.fruits)
+    //   console.log(this.fruits)
     }
   }
   // Get some fruits
