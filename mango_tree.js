@@ -41,10 +41,14 @@ class FruitTree {
   get healthStatus () {
     return this._status
   }
-
+  
+  set healthStatus (input) {
+    this._status = input
+  }
   get harvested () {
     return this._harvested 
   }
+
 
   // Get current states here
   getRandomInt(min, max) {
@@ -56,14 +60,16 @@ class FruitTree {
   // Grow the tree
   grow () {
     let random = this.getRandomInt(this.min , this.max)
-    if (this.age === this.dead) {
-      this._status = false
+    this.age += 1 // this.age = this.age + 1
+
+    if (this.age >= this.dead) {
+      this.healthStatus = false
     }else {
-      this.age += 1 // this.age = this.age + 1
+      if (this.age <= this.stopGrow) {
+        this.height += random
+      }
     }
-    if (this.age <= this.stopGrow) {
-      this.height += random
-    }
+
   }
 
   // Produce some mangoes
@@ -177,7 +183,7 @@ do {
   mangoTree.grow();
   mangoTree.produceFruit();
   mangoTree.harvest();
-      console.log(`[Year ${mangoTree.age} Report] Height = ${mangoTree.height} m | Fruits harvested = ${mangoTree.harvested}`)
+    console.log(`[Year ${mangoTree.age} Report] Height = ${mangoTree.height} m | Fruits harvested = ${mangoTree.harvested}`)
   } while (mangoTree.healthStatus != false)
   
   let appleTree = new AppleTree()
@@ -185,14 +191,15 @@ do {
   appleTree.grow();
   appleTree.produceFruit();
   appleTree.harvest();
-      console.log(`[Year ${appleTree.age} Report] Height = ${appleTree.height} m | Fruits harvested = ${appleTree.harvested}`)
+    console.log(`[Year ${appleTree.age} Report] Height = ${appleTree.height} m | Fruits harvested = ${appleTree.harvested}`)
   } while (appleTree.healthStatus != false)
   
   let pearTree = new PearTree()
-do {
-  pearTree.grow();
-  pearTree.produceFruit();
-  pearTree.harvest();
-      console.log(`[Year ${pearTree.age} Report] Height = ${pearTree.height} m | Fruits harvested = ${pearTree.harvested}`)
-  } while (pearTree.healthStatus != false)
+  while (pearTree.healthStatus != false) {
+    pearTree.grow();
+    pearTree.produceFruit();
+    pearTree.harvest();
+    // console.log(pearTree.healthStatus)
+    console.log(`[Year ${pearTree.age} Report] Height = ${pearTree.height} m | Fruits harvested = ${pearTree.harvested}`)
+    }
   
