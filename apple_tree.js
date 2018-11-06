@@ -7,38 +7,14 @@ class AppleTree extends fruit_Tree{
     constructor () {
       super()
       this._fruitful = 5
-      this._matured = 10  
+      this._matured = 8  
       this._dead = 20
-      this.goodApple = 0
-      this.badApple = 0
-      this.fruits = []
       this._min = 1
       this._max = 2
     }
-  
-    // Get current states here
-    // Produce some apple
-    produceApple () { 
-      this.harvested = Math.round(Math.random() * 20)
-  
-      if(this.age >= this.fruitful){
-        for(let i = 0 ; i < this.harvested; i++){
-          let apple = new Apple ()
-          this.fruits.push(apple)
-        }
-      }     
-    }
-  
-    // Get some fruits
-    harvest () {
-      for(let i = 0 ; i < this.fruits.length ; i++){
-        if(this.fruits[i].quality === 'good'){
-          this.goodApple++
-        }
-        else{
-          this.badApple++
-        }
-      }
+
+    get fruit () {
+      return new Apple()
     }
   }
   
@@ -53,7 +29,8 @@ class AppleTree extends fruit_Tree{
   let appleTree = new AppleTree()
   do {
     appleTree.grow();
-    appleTree.produceApple();
+    appleTree.produceFruit();
     appleTree.harvest();
-    console.log(`[Year ${appleTree.age} Report] Height = ${appleTree.height} | Fruits harvested this year = ${appleTree.harvested}, good: ${appleTree.goodApple}, bad: ${appleTree.badApple}`)
+    console.log(`[Year ${appleTree.age} Report] Height = ${appleTree.height} | Fruits harvested this year = ${appleTree.harvested}, good: ${appleTree.goodFruit}, bad: ${appleTree.badFruit}`)
   } while (appleTree.healthStatus != false)
+  module.exports = AppleTree
