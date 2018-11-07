@@ -5,7 +5,7 @@ const AppleTree = require('./apple_tree')
 const PearTree = require('./pear_tree')
 
 let mangoTree = new MangoTree()
-console.log('Mango Tree')
+console.log('============================== Mango Tree ==============================')
 do {
   mangoTree.grow()
   mangoTree.produceFruits()
@@ -16,7 +16,7 @@ do {
 console.log('')
 
 let appleTree = new AppleTree()
-console.log('Apple Tree')
+console.log('============================== Apple Tree ==============================')
 do {
   appleTree.grow()
   appleTree.produceFruits()
@@ -27,7 +27,7 @@ do {
 console.log('')
 
 let pearTree = new PearTree()
-console.log('Pear Tree')
+console.log('============================== Pear Tree ==============================')
 do {
   pearTree.grow()
   pearTree.produceFruits()
