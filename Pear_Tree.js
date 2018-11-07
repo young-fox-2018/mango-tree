@@ -10,6 +10,9 @@ class PearTree extends fruit_Tree{
       this._matured = 5  
       this._dead = 10
     }
+    getFruit(){
+      return new Pear()
+    }
   }
   
   class Pear extends fruit{
@@ -23,7 +26,7 @@ class PearTree extends fruit_Tree{
   let pearTree = new PearTree()
   do {
     pearTree.grow();
-    pearTree.produceFruit(new Pear());
+    pearTree.produceFruit();
     pearTree.harvest();
     console.log(`[Year ${pearTree.age} Report] Height = ${pearTree.height} | Fruits harvested this year= ${pearTree.harvested}`)
   } while (pearTree.healthStatus != false)

@@ -72,12 +72,16 @@ class FruitTree {
         if(this.age >= this.fruitful){
             for(let i = 0 ; i < this.harvested; i++){
                 if (!input) {
-                    this.fruits.push(new Fruit ())
+                    this.fruits.push(this.getFruit())
                 } else {
                     this.fruits.push(input)
                 }
             }
         }        
+    }
+
+    getFruit(){
+        return new Fruit()
     }
 
 
