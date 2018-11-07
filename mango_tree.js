@@ -1,67 +1,35 @@
 "use strict"
+const fruit_Tree = require('./Fruit_Tree')
+const fruit = require('./Fruit')
 
 // Release 0
 
-class MangoTree {
-
+class MangoTree extends fruit_Tree{
   // Initialize a new MangoTree
   constructor () {
+    super()
+    this._fruitful = 2
+    this._matured = 16  
+    this._dead = 20
   }
-
-  get age () {
+  getFruit(){
+    return new Mango()
   }
-
-  get height () {
-
-  }
-
-  get fruits () {
-  }
-
-  get healthStatus () {
-  }
-
-  get harvested () {
-
-  }
-
-  // Get current states here
-
-  // Grow the tree
-  grow () {
-  }
-
-  // Produce some mangoes
-  produceMangoes () {
-  }
-
-  // Get some fruits
-  harvest () {
-  }
-
 }
 
-class Mango {
+class Mango extends fruit{
   // Produce a mango
   constructor () {
+    super()
   }
 }
 
-/**
-  * driver code untuk release 0
-  * let mangoTree = new MangoTree()
-  * do {
-  *   mangoTree.grow();
-  *   mangoTree.produceMangoes();
-  *   mangoTree.harvest();
-  *   console.log(`[Year ${tree.age} Report] Height = ${tree.height} | Fruits harvested = ${tree.harvested}`)
-  * } while (mangoTree.healthStatus != false)
-  */
-
-// Release 1
-class AppleTree {}
-class Apple {}
-
-// Release 2
-class FruitTree {}
-class Fruit {}
+//   driver code untuk release 0
+   let mangoTree = new MangoTree()
+   do {
+     mangoTree.grow();
+     mangoTree.produceFruit();
+    //  console.log(mangoTree)
+     mangoTree.harvest();
+     console.log(`[Year ${mangoTree.age} Report] Height = ${mangoTree.height} | Fruits harvested this year= ${mangoTree.harvested}`)
+   } while (mangoTree.healthStatus != false)
